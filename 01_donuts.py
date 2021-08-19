@@ -10,8 +10,8 @@ e donuts(23) retorna 'Number of donuts: many'
 """
 
 def donuts(count):
-    # +++ SUA SOLUÇÃO +++
-    return
+    text = "many" if count > 9 else count
+    return "Number of donuts: %s" % text
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
