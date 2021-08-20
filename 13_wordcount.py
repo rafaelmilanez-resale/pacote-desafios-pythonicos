@@ -56,6 +56,40 @@ import sys
 
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
+def print_words(filename):
+    result = read_file_and_build_tuple(filename)
+
+    for word, key in sorted(result):
+        print(word, key)
+
+
+def print_top(filename):
+    result = read_file_and_build_tuple(filename)
+
+    for word, key in sorted(result, key=lambda t: t[1], reverse=True):
+        print(word, key)
+
+
+def read_file_and_build_tuple(filename):
+    words = read_file(filename)
+
+    return build_words_tuple(words)
+
+
+def read_file(filename):
+    file = open(filename, 'r')
+    filedata = " ".join([l for l in file])
+    return [word.lower() for word in filedata.split()]
+
+
+def build_words_tuple(words):
+    result = {}
+    for word in words:
+        if word not in result:
+            result.update({word: 0})
+        result[word] += 1
+
+    return result.items()
 
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
