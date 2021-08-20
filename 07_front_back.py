@@ -11,9 +11,21 @@ Finalmente, dadas duas strings a e b, retorne uma string na forma:
 a-frente + b-frente + a-trás + b-trás
 """
 def front_back(a, b):
-    # +++ SUA SOLUÇÃO +++
-    return
+    a_f, a_t = split_str(a)
+    b_f, b_t = split_str(b)
 
+    return a_f + b_f + a_t + b_t
+
+
+def split_str(s):
+    if len(s) % 2 == 0:
+        # par
+        l = int(len(s) / 2)
+    else:
+        # impar
+        l = int(len(s) / 2) + 1
+
+    return s[:l], s[l:]
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
