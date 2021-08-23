@@ -46,14 +46,44 @@ import sys
 def mimic_dict(filename):
   """Retorna o dicionario imitador mapeando cada palavra para a lista de
   palavras subsequentes."""
-    # +++ SUA SOLUÇÃO +++
-  return
+  file = open(filename, 'r')
+
+  filedata = " ".join([l for l in file])
+
+  words = [word for word in filedata.split()]
+
+  imitacao = {'': [words[0]]}
+
+  words_len = len(words)
+
+  for key, word in enumerate(words):
+    if word not in imitacao:
+      imitacao.update({
+        word: []
+      })
+
+    next_key = key + 1
+
+    if next_key >= words_len:
+      imitacao[word].append('')
+    elif words[next_key] in imitacao[word]:
+      continue
+    else:
+      imitacao[word].append(words[next_key])
+
+  return imitacao
 
 
 def print_mimic(mimic_dict, word):
   """Dado o dicionario imitador e a palavra inicial, imprime texto de 200 palavras."""
-    # +++ SUA SOLUÇÃO +++
-  return
+
+  lero_lero_words = []
+  for count in range(200):
+    lero_lero_words.append(word)
+
+    word = mimic_dict[word][random.randint(0, len(mimic_dict[word]) - 1)]
+
+  print(" ". join(lero_lero_words))
 
 
 # Chama mimic_dict() e print_mimic()
